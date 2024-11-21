@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Querystring</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<html lang="da-dk">
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<h1>Hello World!</h1>
+<p>This is querystring<p>
+
+
+    {% include 'menu.html' %}
+
+
+     
+<img src="../img/mintara_gay.png" width="200" height="200"><br>
+
+    {% if name %}
+    <h1>Your name is: {{ name }}!</h1>
+    <h1>Your age is: {{ age }}!</h1>
+    <h1>Your nationality is: {{ nationality }}!</h1>
+    <a herf="../querystring"></a>
+    {% else %}
+        <h1>Who are you?</h1>
+            <form method="get" action="/querystring">
+                <input type="text" name="name" placeholder="Enter your name" required><br><br>
+                <input type="number" name="age" placeholder="Enter your age" required><br><br>
+                <select id="options" name="nationality" required>
+                    <option value="" selected disabled>-- Choose a country --</option>
+                    <option value="DK">Danmark</option>
+                    <option value="UK">United Kingodm</option>
+                    <option value="IE">Irland</option>
+                    <option value="USA">United States of America</option>
+                    <option value="JP">日本</option>
+                </select><br><br>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+            {% endif %}
+
+
+            <div class="coppyright">©Rory 2024 - 2024</div>
+
+</body>
+</html>

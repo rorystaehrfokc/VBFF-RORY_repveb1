@@ -1,0 +1,21 @@
+body{
+    text-align: center;
+}
+
+.backgrund{
+    background-image: "../static/img/IMG_0613.jpeg";
+}
+
+.coppyright{
+    position: relative;
+    left: 10; float: left;
+    top: 90%;
+}
+
+
+.menu{
+    position: relative;
+    background-color: rgb(46, 236, 179);
+    text-align: center;
+    border: 20px;
+}
