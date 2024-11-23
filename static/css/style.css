@@ -1,21 +1,60 @@
-body{
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
     text-align: center;
 }
 
-.backgrund{
-    background-image: "../static/img/IMG_0613.jpeg";
+header h1 {
+    margin: 0;
 }
 
-.coppyright{
-    position: relative;
-    left: 10; float: left;
-    top: 90%;
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
 
-.menu{
-    position: relative;
-    background-color: rgb(46, 236, 179);
+.message-list {
+    list-style: none;
+    padding: 0;
+}
+
+.message-item {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.message-form label {
+    font-weight: bold;
+}
+
+footer {
     text-align: center;
-    border: 20px;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
 }
