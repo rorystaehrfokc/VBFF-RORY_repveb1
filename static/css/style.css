@@ -5,6 +5,17 @@ body {
     padding: 0;
     background-color: #f9f9f9;
     color: #333;
+    text-align: center;
+}
+
+.backgrund{
+    background-image: url("../static/img/IMG_0613.jpeg");
+}
+
+.copyright {
+    text-align: center;
+    text-align: end;
+    background-color: #333;
 }
 
 .container {

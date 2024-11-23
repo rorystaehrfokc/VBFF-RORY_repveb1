@@ -1,7 +1,19 @@
+    <title>{% block title %}Guestbook{% endblock %}</title>
 
-<div class="menu">
-    
-    <a href="../">HOME</a> |
-    <a href="../about">ABOUT</a> |
-    <a href="../msg">MSG</a> |
-    <a href="../querystring">QUERYSTRING</a> | </div><br>
+    <div class="container">
+        <header>
+            <nav>
+            <div class="menu">
+                <a href="../">HOME</a> |
+                <a href="../about">ABOUT</a> |
+                <a href="../msg">MSG</a> |
+                <a href="../querystring">QUERYSTRING</a> |
+            </nav>
+        </header>
+        <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 VBFF CYBER LINJEN</p>
+    </footer>
+    </div>
