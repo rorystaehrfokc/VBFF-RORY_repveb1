@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Message - Gæstebogen{% endblock %}
+{% block title %}Message - Guestbook{% endblock %}
 
 {% block content %}
     {% if messages %}
@@ -15,4 +15,6 @@
     {% else %}
         <p>No messages yet. Be the first to write one!</p>
     {% endif %}
+    <a href="../messages/write">write a messages</a> |
+
 {% endblock %}

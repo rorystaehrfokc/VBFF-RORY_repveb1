@@ -37,19 +37,30 @@ def quertstring():
     name = request.args.get("name")
     age = request.args.get("age")
     nationality = request.args.get("nationality")
+    cookie_name = request.args.get("cookie_name")
+    name = request.cookies.get("name", "")
+
+    if cookie_name == "Save":
+        set_cookie("name", name)
+        pass
+    else:
+        pass
+
     return  render_template('querystring.html',
                             title="Querystring",
                             name=name,
                             age=age,
                             nationality=nationality)
+    
+    
 
-@app.route('/messeges')
+@app.route('/messages')
 def messeges():
-    return  render_template('messeges.html',
-                            title="Messeges",
+    return  render_template('messages.html',
+                            title="Messages",
                             messages = messages)
 
-@app.route("/messeges/write", methods=["GET", "POST"])
+@app.route("/messages/write", methods=["GET", "POST"])
 def write():
     if request.method == "POST":
         name = request.form.get("name")
@@ -94,11 +105,11 @@ def get_cookie():
 @app.route("/delete_cookie")
 def delete_cookie():
     response = make_response("Cookie Deleted")
-    response.delete_cookie("_name")
+    response.delete_cookie("name")
     return response
 
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+        app.run(debug=True, port=8080)
 
