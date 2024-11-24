@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da-dk">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-16">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>{% block title %}Guestbook{% endblock %}</title>
@@ -9,16 +9,14 @@
 <body>
     <div class="container">
         <header>
-            <h1>Min Gæstebog</h1>
-            <nav>
-                <a href="/">Home</a> | <a href="/write">Write a Message</a>
-            </nav>
+            <h1>My Guestbook</h1>
         </header>
+        {% include 'menu.html' %}
         <main>
             {% block content %}{% endblock %}
         </main>
         <footer>
-            <p>&copy; 2024 VBFF CYBER LINJEN</p>
+            <p>&copy; 2024 VBFF CYBER LINJEN(RORY)</p>
         </footer>
     </div>
 </body>

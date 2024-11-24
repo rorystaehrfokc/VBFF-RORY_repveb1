@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>About</title>
-<link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-<html lang="da-dk">
-    <meta charset="UTF-16">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<h1>Hello World!</h1>
-<p>This is the about page<p>
+{% block title %}Message - Gæstebogen{% endblock %}
 
-    {% include 'menu.html' %}
-
-    <img src="../img/rainbow.jpeg" width="200" height="200"><br><br><br>
+{% block content %}
+<img src="../img/rainbow.jpeg" width="200" height="200"><br><br><br>
 
 
 
 <a href="https://www.youtube.com/@Rory_dk"> My YouTube</a><br><br>
 
-    {% include 'copyright.html' %}
 
-</body>
-</html>
+{% endblock %}

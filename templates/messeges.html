@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Message - Gæstebogen{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="message-list">
+        {% for timestamp, entry in messages.items() %}
+            <li class="message-item">
+                <strong>{{ entry.name }}</strong> wrote on {{ timestamp }}: <br>
+                <p>{{ entry.message }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No messages yet. Be the first to write one!</p>
+    {% endif %}
+{% endblock %}

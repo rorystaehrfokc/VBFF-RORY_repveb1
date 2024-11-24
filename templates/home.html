@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Home</title>
-<link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-<html lang="da-dk">
-    <meta charset="UTF-16">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends "base.html" %}
 
-<h1>Hello World!</h1>
-<p>This is home<p>
+{% block title %}Message - Gæstebogen{% endblock %}
 
-
-    {% include 'menu.html' %}
-
-
+{% block content %}
     <br>
     <img src="../img/blaahaj.jpeg" width="200" height="300"><br>
 
-    {% include 'copyright.html' %}
-    <div class="background"></div>
-</body>
-
-<style>
-    .backgrund{
-        background-image: url("../images/IMG_0613.jpeg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        width: 200vh;
-        height: 200vh;
-    }
-    
-</style>
-
-
-</html>
+{% endblock %}

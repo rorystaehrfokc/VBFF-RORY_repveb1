@@ -46,24 +46,55 @@ def quertstring():
 @app.route('/messeges')
 def messeges():
     return  render_template('messeges.html',
-                            title="Messeges")
+                            title="Messeges",
+                            messages = messages)
+
+@app.route("/messeges/write", methods=["GET", "POST"])
+def write():
+    if request.method == "POST":
+        name = request.form.get("name")
+        message = request.form.get("message")
+        
+        # Validate inputs
+        if not name or not message:
+            return "Name and message cannot be empty!", 400
+        
+        # Get current timestamp
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Save message
+        messages[timestamp] = {"name": name, "message": message}
+        
+        # Save to disk
+        with open(MESSAGES_FILE, "w") as file:
+            json.dump(messages, file, indent=4)
+        
+        # Store name in cookie
+        resp = make_response(redirect("/messeges"))
+        resp.set_cookie("name", name)
+        return resp
+    
+    # Pre-fill name from cookie if available
+    name = request.cookies.get("name", "")
+    return render_template("write.html", name=name)
+
 
 
 @app.route("/set_cookie")
 def set_cookie():
     response = make_response("Cookie set")
-    response.set_cookie("cookie_name", "cookie_value")
+    response.set_cookie("name", "cookie_value")
     return response
 
 @app.route("/get_cookie")
 def get_cookie():
-    cookie_value = request.cookies.get("cookie_name")
+    cookie_value = request.cookies.get("name")
     return cookie_value
 
 @app.route("/delete_cookie")
 def delete_cookie():
     response = make_response("Cookie Deleted")
-    response.delete_cookie("cookie_name")
+    response.delete_cookie("_name")
     return response
 
 
