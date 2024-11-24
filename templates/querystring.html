@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Querystring</title>
-<link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-<html lang="da-dk">
-    <meta charset="UTF-16">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<h1>Hello World!</h1>
-<p>This is querystring<p>
+{% block title %}querystring - Guestebook{% endblock %}
 
+{% block content %}
 
-    {% include 'menu.html' %}
-
-
-     
 <img src="../img/mintara_gay.png" width="200" height="200"><br>
 
     {% if name %}
@@ -28,9 +14,9 @@
     {% else %}
         <h1>Who are you?</h1>
             <form method="get" action="/querystring">
-                <input type="text" name="name" placeholder="Enter your name" required><br><br>
-                <input type="number" name="age" placeholder="Enter your age" required><br><br>
-                <select id="options" name="nationality" required>
+                <input type="text" name="name" placeholder="Enter your name" width="200" required><br><br>
+                <input type="number" name="age" min="1"m max="99" placeholder="Enter your age" width="200" required><br><br>
+                <select id="options" name="nationality" width="200" required>
                     <option value="" selected disabled>-- Choose a country --</option>
                     <option value="DK">Danmark</option>
                     <option value="IE">Irland</option>
@@ -38,13 +24,17 @@
                     <option value="USA">United States of America</option>
                     <option value="JP">日本</option>
                 </select><br><br>
+        
+                <label>Save Name</label>
+                <input type="radio" name="cookie_Name" value="Save" required>
+                
+                <label>Don't save Name</label>
+                <input type="radio" name="cookie_Name" value="unSave" required>
+                <br><br>
+
                 <button type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </form>
             {% endif %}
 
-
-{% include 'copyright.html' %}
-
-</body>
-</html>
+{% endblock %}
