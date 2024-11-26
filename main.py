@@ -19,21 +19,67 @@ else:
     messages = {}
 
 
+
+
 # Home
 @app.route('/')
 def home():
+    language = request.cookies.get("lange", "")
+    text = 0
+
+    first_write = False
+    language = "en"
+    #first line
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(2)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(3)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(4)
+
     return render_template('home.html',
                            title="Home")
+    
 
 #About
 @app.route('/about')
 def about():
+    language = request.cookies.get("lange", "")
+    text = 0
+
+    first_write = False
+    language = "en"
+    #first line
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(2)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(3)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(4)
     return  render_template('about.html',
                             title="About")
 
 
 @app.route('/querystring')
 def quertstring():
+    language = request.cookies.get("lange", "")
+    text = 0
+
+    first_write = False
+    language = "en"
+    #first line
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(2)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(3)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(4)
     name = request.args.get("name")
     age = request.args.get("age")
     nationality = request.args.get("nationality")
@@ -55,12 +101,40 @@ def quertstring():
 
 @app.route('/messages')
 def messeges():
+    language = request.cookies.get("lange", "")
+    text = 0
+
+    first_write = False
+    language = "en"
+    #first line
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(2)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(3)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(4)
     return  render_template('messages.html',
                             title="Messages",
                             messages = messages)
 
 @app.route("/messages/write", methods=["GET", "POST"])
 def write():
+    language = request.cookies.get("lange", "")
+    text = 0
+
+    first_write = False
+    language = "en"
+    #first line
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(2)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(3)
+
+    with open(f'../translated/home_{language}.txt', 'r') as f:
+        text = f.readline(4)
     if request.method == "POST":
         name = request.form.get("name")
         message = request.form.get("message")
@@ -105,8 +179,5 @@ def delete_cookie():
     response.delete_cookie("name")
     return response
 
-
-
 if __name__ == '__main__':
         app.run(debug=True, port=8080)
-

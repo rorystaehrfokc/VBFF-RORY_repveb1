@@ -10,8 +10,9 @@
     <div class="container">
         <header>
             <h1>My Guestbook</h1>
+            {% include 'menu.html' %}
         </header>
-        {% include 'menu.html' %}
+        
         <main>
             {% block content %}{% endblock %}
         </main>
