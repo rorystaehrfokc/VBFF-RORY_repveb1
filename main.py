@@ -38,14 +38,13 @@ def quertstring():
     age = request.args.get("age")
     nationality = request.args.get("nationality")
     cookie_name = request.args.get("cookie_name")
-    name = request.cookies.get("name", "")
 
     if cookie_name == "Save":
         set_cookie("name", name)
         pass
     else:
         pass
-
+    name = request.cookies.get("name", "")
     return  render_template('querystring.html',
                             title="Querystring",
                             name=name,
@@ -88,8 +87,6 @@ def write():
     # Pre-fill name from cookie if available
     name = request.cookies.get("name", "")
     return render_template("write.html", name=name)
-
-
 
 @app.route("/set_cookie")
 def set_cookie():
