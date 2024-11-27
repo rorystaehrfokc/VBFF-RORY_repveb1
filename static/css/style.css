@@ -66,11 +66,12 @@ nav a:hover {
 }
 
 .message-item {
-    background: #fff;
+    background: #161616;
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    color: aquamarine;
 }
 
 .message-form label {
@@ -200,7 +201,7 @@ animation: 3s spin linear infinite;
 
 .socials-container{
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 .socials-container a{
   background-color: white;
@@ -253,28 +254,6 @@ animation: 3s spin linear infinite;
 .socials-container a:hover::after{
   transform: translateY(-42px) rotate(0);
   opacity: 1;
-}
-
-.navigation ul {
-    display: flex;
-    width: 350px;
-}
-
-.navigation ul li{
-    position: relative;
-    list-style: none;
-    width: 70px;
-    height: 70px;
-    z-index: 1;}
-.navigation ul li a{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
 }
 
 footer {
