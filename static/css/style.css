@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;   
@@ -16,6 +17,9 @@ body {
     background-color: #1c1f2b;
     color: #f9f9f9;
     text-align: center;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 }
 
 .backgrund{
@@ -52,7 +56,8 @@ nav a {
 }
 
 nav a:hover {
-    text-decoration: underline;
+ 
+    background-color: #006aff;
 }
 
 .message-list {
@@ -75,7 +80,7 @@ nav a:hover {
 .card_1{
 margin: 0 auto;
 padding: 2em;
-width: 500px;
+width: 300px;
 background: #1c1f2b;
 text-align: center;
 border-radius:  10px;
@@ -108,6 +113,81 @@ animation: 3s spin linear infinite;
     opacity: 0.5;
 
 }
+
+
+.card_2{
+margin: 0 auto;
+padding: 2em;
+width: 300px;
+background: #1c1f2b;
+text-align: center;
+border-radius:  10px;
+position: relative;
+color:aqua;
+}
+
+@property --angle2{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card_2::after, .card_2::before{
+content: '';
+position: absolute;
+height: 100%;
+width: 100%;
+background-image: conic-gradient(from var(--angle), aqua, transparent, red, transparent, aqua);
+top: 50%;
+left: 50%;
+translate: -50% -50%;
+z-index: -1;
+padding: 4px;
+border-radius: 10px;
+animation: 3s spin linear infinite;
+}
+.card_2::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+
+}
+
+.card_3{
+margin: 0 auto;
+padding: 2em;
+width: 300px;
+background: #1c1f2b;
+text-align: center;
+border-radius:  10px;
+position: relative;
+color:aqua;
+}
+
+@property --angle3{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card_3::after, .card_3::before{
+content: '';
+position: absolute;
+height: 100%;
+width: 100%;
+background-image: conic-gradient(from var(--angle), green, transparent, red, transparent, green);
+top: 50%;
+left: 50%;
+translate: -50% -50%;
+z-index: -1;
+padding: 4px;
+border-radius: 10px;
+animation: 3s spin linear infinite;
+}
+.card_3::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+
+}
 @keyframes spin{
     from{
         --angle: 0deg;
@@ -115,52 +195,87 @@ animation: 3s spin linear infinite;
     to{
         --angle: 360deg;
     }
+}    
+        
+
+.socials-container{
+  display: flex;
+  gap: 20px;
+}
+.socials-container a{
+  background-color: white;
+  padding: 1em;
+  border-radius: 50%;
+  height: 64px;
+  width: 64px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.socials-container a svg{
+  height: 32px;
+}
+.socials-container a::before{
+  content: attr(data-social);
+  position: absolute;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  transform: translateY(-30px) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover{
+  background-color: var(--accent-color);
+  fill: white;
+}
+.socials-container a::after{
+  content: '';
+  position: absolute;
+  height: 0;
+  width: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 10px solid var(--accent-color);
+  transform: translateY(0) rotate(25deg);
+  opacity: 0;
+  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.socials-container a:hover::before{
+  transform: translateY(-65px) rotate(0);
+  opacity: 1;
+}
+.socials-container a:hover::after{
+  transform: translateY(-42px) rotate(0);
+  opacity: 1;
 }
 
-.card_2{
-    margin: 0 auto;
-    padding: 2em;
-    width: 500px;
-    background: #1c1f2b;
-    text-align: center;
-    border-radius:  10px;
+.navigation ul {
+    display: flex;
+    width: 350px;
+}
+
+.navigation ul li{
     position: relative;
-    color:aqua;
-    }
-    
-    @property --angle2{
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
-    }
-    
-    .card_2::after, .card_2::before{
-    content: '';
-    position: absolute;
-    height: 100%;
+    list-style: none;
+    width: 70px;
+    height: 70px;
+    z-index: 1;}
+.navigation ul li a{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
-    background-image: conic-gradient(from var(--angle2), blue, transparent, red, transparent, blue);
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: -1;
-    padding: 4px;
-    border-radius: 10px;
-    animation: 3s spin linear infinite;
-    }
-    .card_2::before{
-        filter: blur(1.5rem);
-        opacity: 0.5;
-    
-    }
-    @keyframes spin{
-        from{
-            --angle2: 0deg;
-        }
-        to{
-            --angle2: 360deg;
-        }
-    }
+    text-align: center;
+    font-weight: 500;
+}
 
 footer {
     text-align: center;

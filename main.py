@@ -24,41 +24,44 @@ else:
 # Home
 @app.route('/')
 def home():
-    language = request.cookies.get("lange", "")
+    language = "en"
+    language = request.cookies.get("language", "")
     text = 0
 
     first_write = False
     language = "en"
     #first line
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/home_{language}.txt', 'r') as f:
         text = f.readline(2)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/home_{language}.txt', 'r') as f:
         text = f.readline(3)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/home_{language}.txt', 'r') as f:
         text = f.readline(4)
 
     return render_template('home.html',
-                           title="Home")
+                           title="Home",
+                           text = text)
     
 
 #About
 @app.route('/about')
 def about():
+    language = "en"
     language = request.cookies.get("lange", "")
     text = 0
 
     first_write = False
     language = "en"
     #first line
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/about_{language}.txt', 'r') as f:
         text = f.readline(2)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/about_{language}.txt', 'r') as f:
         text = f.readline(3)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/about_{language}.txt', 'r') as f:
         text = f.readline(4)
     return  render_template('about.html',
                             title="About")
@@ -66,27 +69,27 @@ def about():
 
 @app.route('/querystring')
 def quertstring():
-    language = request.cookies.get("lange", "")
+    language = request.cookies.get("language", "")
     text = 0
 
     first_write = False
     language = "en"
     #first line
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/querystring_{language}.txt', 'r') as f:
         text = f.readline(2)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/querystring_{language}.txt', 'r') as f:
         text = f.readline(3)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/querystring_{language}.txt', 'r') as f:
         text = f.readline(4)
     name = request.args.get("name")
     age = request.args.get("age")
-    nationality = request.args.get("nationality")
+    language = request.args.get("language")
     cookie_name = request.args.get("cookie_name")
 
     if cookie_name == "Save":
-        set_cookie("name", name)
+        set_cookie("name", name, "age", age)
         pass
     else:
         pass
@@ -95,25 +98,25 @@ def quertstring():
                             title="Querystring",
                             name=name,
                             age=age,
-                            nationality=nationality)
+                            language=language)
     
     
 
 @app.route('/messages')
 def messeges():
-    language = request.cookies.get("lange", "")
+    language = request.cookies.get("language", "")
     text = 0
 
     first_write = False
     language = "en"
     #first line
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/messages_{language}.txt', 'r') as f:
         text = f.readline(2)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/messages_{language}.txt', 'r') as f:
         text = f.readline(3)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/messages_{language}.txt', 'r') as f:
         text = f.readline(4)
     return  render_template('messages.html',
                             title="Messages",
@@ -121,19 +124,19 @@ def messeges():
 
 @app.route("/messages/write", methods=["GET", "POST"])
 def write():
-    language = request.cookies.get("lange", "")
+    language = request.cookies.get("language", "")
     text = 0
 
     first_write = False
     language = "en"
     #first line
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/write_{language}.txt', 'r') as f:
         text = f.readline(2)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/write_{language}.txt', 'r') as f:
         text = f.readline(3)
 
-    with open(f'../translated/home_{language}.txt', 'r') as f:
+    with open(f'./translated/write_{language}.txt', 'r') as f:
         text = f.readline(4)
     if request.method == "POST":
         name = request.form.get("name")
@@ -165,18 +168,18 @@ def write():
 @app.route("/set_cookie")
 def set_cookie():
     response = make_response("Cookie set")
-    response.set_cookie("name", "cookie_value")
+    response.set_cookie("name",)
     return response
 
 @app.route("/get_cookie")
 def get_cookie():
-    cookie_value = request.cookies.get("name")
+    cookie_value = request.cookies.get("name", "", "age", "", "language", "")
     return cookie_value
 
 @app.route("/delete_cookie")
 def delete_cookie():
     response = make_response("Cookie Deleted")
-    response.delete_cookie("name")
+    response.delete_cookie("name", "age", "language")
     return response
 
 if __name__ == '__main__':

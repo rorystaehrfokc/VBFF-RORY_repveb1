@@ -1,35 +1,29 @@
 {% extends "base.html" %}
-
 {% block title %}querystring - Guestebook{% endblock %}
-
 {% block content %}
-
-<img src="../img/mintara_gay.png" width="200" height="200"><br>
-
+<img src="../img/mintara_gay.png" width="200" height="200"><br><br>
+<div class="card_3">
     {% if name %}
     <h1>Your name is: {{ name }}!</h1>
     <h1>Your age is: {{ age }}!</h1>
-    <h1>Your nationality is: {{ nationality }}!</h1>
+    <h1>Your language is: {{ nationality }}!</h1>
     <a herf="../querystring">Back</a>
     {% else %}
         <h1>Who are you?</h1>
             <form method="get" action="/querystring">
                 <input type="text" name="name" placeholder="Enter your name" width="200" required><br><br>
                 <input type="number" name="age" min="1"m max="99" placeholder="Enter your age" width="200" required><br><br>
-                <select id="options" name="nationality" width="200" required>
-                    <option value="" selected disabled>-- Choose a country --</option>
-                    <option value="DK">Danmark</option>
-                    <option value="IE">Irland</option>
-                    <option value="UK">United Kingodm</option>
-                    <option value="USA">United States of America</option>
-                    <option value="SJ" disabled>Svarire</option>
-                    <option value="JP">日本</option>
+                <select id="options" name="language" width="200" required>
+                <option value="" selected disabled>-- Choose a language --</option>
+                <option value="da">🇩🇰 Dansk</option>
+                <option value="sj" disabled>🇸🇪 Svanska</option>
+                <option value="en">🇬🇧 English</option>
+                <option value="jp">🇯🇵 日本語</option>
                 </select><br><br>
-        
-                <label for="Save">Save Name</label>
+                <label for="Save">Save Name and Age</label>
                 <input type="radio" id="Save" name="cookie_Name" value="Save" required>
-                
-                <label for="unSave">Don't save Name</label>
+                <br>
+                <label for="unSave">Don't save Name and Age</label>
                 <input type="radio" id="unSave" name="cookie_Name" value="unSave" required>
                 <br><br>
 
@@ -37,5 +31,5 @@
                 <button type="reset">Reset</button>
             </form>
             {% endif %}
-
+</div>
 {% endblock %}
