@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Set you language🌐 - Guestbook{% endblock %}
+
+{% block content %}
+
+<select id="options" name="language" width="200" required>
+<option value="" selected disabled>-- Choose a language🌐 --</option>
+    <option value="da">🇩🇰 Dansk</option>
+    <option value="sj" disabled>🇸🇪 Svanska</option>
+    <option value="en">🇬🇧 English</option>
+    <option value="jp">🇯🇵 日本語</option>
+    </select>
+
+
+{% endblock %}

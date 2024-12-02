@@ -1,5 +1,5 @@
 # import table
-from flask import Flask, request, redirect, render_template, make_response
+from flask import Flask, request, redirect, render_template, make_response, url_for
 import io, json, os
 from datetime import datetime
 
@@ -18,82 +18,75 @@ if os.path.exists(MESSAGES_FILE):
 else:
     messages = {}
 
-a = "en"
-with open(f'./translated/home_{a}.txt', 'r') as f:
-    text1 = f.readline(2)
-    print(text1)
-
 # Home
 @app.route('/')
 def home():
+    if request.cookies.get("First_time", "") == "no":
+        pass
+    else:
+        return redirect('/set_language', "home")
     if request.cookies.get("language", "") == "da" or "en" or "Jp":
         language = request.cookies.get("language", "")
     else:
         language = "en"
         set_cookie("language", language)
     language = "en"
-    text1 = 0
-    text2 = 0
-    text3 = 0
-    #first line
-    with open(f'./translated/home_{language}.txt', 'r') as f:
-        text1 = f.readline(2)
-
-    with open(f'./translated/home_{language}.txt', 'r') as f:
-        text2 = f.readline(3)
-
-    with open(f'./translated/home_{language}.txt', 'r') as f:
-        text3 = f.readline(4)
-
-    
+    language_file = f"translated/about_{language}.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r") as fp:
+           lang = json.load(fp)
+    else:
+        lang = {}
+        with open(f'./translate/about_{language}.json', 'w') as fp:
+           json.dump(lang, fp)
+        pass
     return render_template('home.html',
-                           title="Home",
-                           text1 = text1,
-                           text2 = text2,
-                           text3 = text3)
+                           title="Home")
     
 
 #About
 @app.route('/about')
 def about():
-    language = "en"
-    language = request.cookies.get("lange", "")
-    text = 0
-
-    first_write = False
-    language = "en"
-    #first line
-    with open(f'./translated/about_{language}.txt', 'r') as f:
-        text1 = f.readline(2)
-
-    with open(f'./translated/about_{language}.txt', 'r') as f:
-        text2 = f.readline(3)
-
-    with open(f'./translated/about_{language}.txt', 'r') as f:
-        text3 = f.readline(4)
+    if request.cookies.get("First_time", "") == "no":
+        pass
+    else:
+        return redirect('/set_language', "about")
+    if request.cookies.get("language", "") == "da" or "en" or "Jp":
+        language = request.cookies.get("language", "")
+    else:
+        language = "en"
+        set_cookie("language", language)
+    language_file = "translated/home_{language}.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r") as file:
+            #Insert dictonary
+            pass
+    else:
+        #Insert dictonary_2
+        pass
     return  render_template('about.html',
-                            title="About",
-                            text1 = text1,
-                            text2 = text2,
-                            text3 = text3)
+                            title="About")
 
 
 @app.route('/querystring')
 def quertstring():
-    language = request.cookies.get("language", "")
-    text = 0
-
-    first_write = False
-    language = "en"
-    #first line
-    with open(f'./translated/querystring_{language}.txt', 'r') as f:
-        text = f.readline(2)
-
-    with open(f'./translated/querystring_{language}.txt', 'r') as f:
-        text = f.readline(3)
-
-    with open(f'./translated/querystring_{language}.txt', 'r') as f:
-        text = f.readline(4)
+    if request.cookies.get("First_time", "") == "no":
+        pass
+    else:
+        return redirect('/set_language', "querystring")
+    if request.cookies.get("language", "") == "da" or "en" or "Jp":
+        language = request.cookies.get("language", "")
+    else:
+        language = "en"
+        set_cookie("language", language)
+    language_file = "translated/home_{language}.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r") as file:
+            #Insert dictonary
+            pass
+    else:
+        #Insert dictonary_2
+        pass
     name = request.args.get("name")
     age = request.args.get("age")
     language = request.args.get("language")
@@ -110,38 +103,48 @@ def quertstring():
     
 
 @app.route('/messages')
-def messeges():
-    language = request.cookies.get("language", "")
-    text = 0
-
-    first_write = False
-    language = "en"
-    #first line
-    with open(f'./translated/messages_{language}.txt', 'r') as f:
-        text = f.readline(2)
-
-    with open(f'./translated/messages_{language}.txt', 'r') as f:
-        text = f.readline(3)
-
-    with open(f'./translated/messages_{language}.txt', 'r') as f:
-        text = f.readline(4)
+def msg():
+    if request.cookies.get("First_time", "") == "no":
+        pass
+    else:
+        return redirect('/set_language', "messages")
+    if request.cookies.get("language", "") == "da" or "en" or "Jp":
+        language = request.cookies.get("language", "")
+    else:
+        language = "en"
+        set_cookie("language", language)
+    language_file = "translated/home_{language}.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r") as file:
+            #Insert dictonary
+            pass
+    else:
+        #Insert dictonary_2
+        pass
     return  render_template('messages.html',
                             title="Messages",
                             messages = messages)
 
 @app.route("/messages/write", methods=["GET", "POST"])
 def write():
-    language = request.cookies.get("language", "")
-    language = "en"
-    #first line
-    with open(f'./translated/write_{language}.txt', 'r') as f:
-        text1 = f.readline(2)
-
-    with open(f'./translated/write_{language}.txt', 'r') as f:
-        text2 = f.readline(3)
-
-    with open(f'./translated/write_{language}.txt', 'r') as f:
-        text3 = f.readline(4)
+    if request.cookies.get("First_time", "") == "no":
+        pass
+    else:
+        return redirect('/set_language', "messages")
+    if request.cookies.get("language", "") == "da" or "en" or "Jp":
+        language = request.cookies.get("language", "")
+    else:
+        language = "en"
+        set_cookie("language", language)
+    language_file = "translated/home_{language}.json"
+    if os.path.exists(language_file):
+        with open(language_file, "r") as file:
+            #Insert dictonary
+            pass
+    else:
+        #Insert dictonary_2
+        pass
+   
     if request.method == "POST":
         name = request.form.get("name")
         message = request.form.get("message")
@@ -161,13 +164,22 @@ def write():
             json.dump(messages, file, indent=4)
         
         # Store name in cookie
-        resp = make_response(redirect("/messeges"))
+        resp = make_response(redirect("/messages"))
         resp.set_cookie("name", name)
         return resp
     
     # Pre-fill name from cookie if available
     name = request.cookies.get("name", "")
     return render_template("write.html", name=name)
+
+@app.route("/set_language")
+def set_language():
+    set__language = ""
+    language = request.args.get("language")
+    set__language.set_cookie("language", language)
+    return render_template("set_language.html",
+                           language = language)
+                           
 
 @app.route("/set_cookie")
 def set_cookie():

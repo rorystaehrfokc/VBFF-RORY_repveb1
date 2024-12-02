@@ -17,7 +17,7 @@ body {
     background-color: #1c1f2b;
     color: #f9f9f9;
     text-align: center;
-    min-height: 100vh;
+    height: 100vh;
     display: grid;
     place-items: center;
 }
@@ -79,14 +79,19 @@ nav a:hover {
 }
 
 .card_1{
-margin: 0 auto;
-padding: 2em;
-width: 300px;
-background: #1c1f2b;
-text-align: center;
-border-radius:  10px;
-position: relative;
-color:aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2em;
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 80%;
+    background: #1c1f2b;
+    text-align: center;
+    border-radius:  10px;
+    position: relative;
+    color:aqua;
 }
 
 @property --angle{
@@ -96,18 +101,18 @@ color:aqua;
 }
 
 .card_1::after, .card_1::before{
-content: '';
-position: absolute;
-height: 100%;
-width: 100%;
-background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
-top: 50%;
-left: 50%;
-translate: -50% -50%;
-z-index: -1;
-padding: 4px;
-border-radius: 10px;
-animation: 3s spin linear infinite;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 4px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
 }
 .card_1::before{
     filter: blur(1.5rem);
@@ -117,14 +122,17 @@ animation: 3s spin linear infinite;
 
 
 .card_2{
-margin: 0 auto;
-padding: 2em;
-width: 300px;
-background: #1c1f2b;
-text-align: center;
-border-radius:  10px;
-position: relative;
-color:aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2em;
+    width: 300px;
+    background: #1c1f2b;
+    text-align: center;
+    border-radius:  10px;
+    position: relative;
+    color:aqua;
 }
 
 @property --angle2{
@@ -154,14 +162,17 @@ animation: 3s spin linear infinite;
 }
 
 .card_3{
-margin: 0 auto;
-padding: 2em;
-width: 300px;
-background: #1c1f2b;
-text-align: center;
-border-radius:  10px;
-position: relative;
-color:aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 2em;
+    width: 300px;   
+    background: #1c1f2b;
+    text-align: center;
+    border-radius:  10px;
+    position: relative;
+    color:aqua;
 }
 
 @property --angle3{
@@ -171,18 +182,18 @@ color:aqua;
 }
 
 .card_3::after, .card_3::before{
-content: '';
-position: absolute;
-height: 100%;
-width: 100%;
-background-image: conic-gradient(from var(--angle), green, transparent, red, transparent, green);
-top: 50%;
-left: 50%;
-translate: -50% -50%;
-z-index: -1;
-padding: 4px;
-border-radius: 10px;
-animation: 3s spin linear infinite;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), green, transparent, red, transparent, green);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 4px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
 }
 .card_3::before{
     filter: blur(1.5rem);
@@ -200,60 +211,118 @@ animation: 3s spin linear infinite;
         
 
 .socials-container{
-  display: flex;
-  gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 .socials-container a{
-  background-color: white;
-  padding: 1em;
-  border-radius: 50%;
-  height: 64px;
-  width: 64px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    padding: 1em;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
 }
 .socials-container a svg{
-  height: 32px;
+    height: 32px;
 }
 .socials-container a::before{
-  content: attr(data-social);
-  position: absolute;
-  background-color: var(--accent-color);
-  color: white;
-  text-decoration: none;
-  padding: 0.5em 1em;
-  border-radius: 100px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  transform: translateY(-30px) rotate(25deg);
-  opacity: 0;
-  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+    content: attr(data-social);
+    position: absolute;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transform: translateY(-30px) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
 }
 .socials-container a:hover{
-  background-color: var(--accent-color);
-  fill: white;
+    background-color: var(--accent-color);
+    fill: white;
 }
 .socials-container a::after{
-  content: '';
-  position: absolute;
-  height: 0;
-  width: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 10px solid var(--accent-color);
-  transform: translateY(0) rotate(25deg);
-  opacity: 0;
-  transition: 200ms cubic-bezier(.42,0,.44,1.68);
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--accent-color);
+    transform: translateY(0) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
 }
 .socials-container a:hover::before{
-  transform: translateY(-65px) rotate(0);
-  opacity: 1;
+    transform: translateY(-65px) rotate(0);
+    opacity: 1;
 }
 .socials-container a:hover::after{
-  transform: translateY(-42px) rotate(0);
-  opacity: 1;
+    transform: translateY(-42px) rotate(0);
+    opacity: 1;
+}
+
+.write_message{
+    display: flex;
+    float: right;
+    fill: white;
+}
+.write_message a{
+    background-color: #40AEF0;
+    padding: 1em;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    place-items: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+.write_message a svg{
+    height: 32px;
+}
+.write_message a::before{
+    content: attr(data-social);
+    position: absolute;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transform: translateY(-30px) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.write_message a:hover{
+    background-color: var(--accent-color);
+}
+.write_message a::after{
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid var(--accent-color);
+    transform: translateY(0) rotate(25deg);
+    opacity: 0;
+    transition: 200ms cubic-bezier(.42,0,.44,1.68);
+}
+.write_message a:hover::before{
+    transform: translateY(-65px) rotate(0);
+    opacity: 1;
+}
+.write_message a:hover::after{
+    transform: translateY(-42px) rotate(0);
+    opacity: 1;
 }
 
 footer {
