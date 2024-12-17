@@ -1,8 +1,0 @@
-** for querystring page **
-Your name is
-Your age is
-Your language is
-
-Enter your name
-Enter your age
-Choose a language
