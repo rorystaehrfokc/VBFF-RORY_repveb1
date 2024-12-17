@@ -3,15 +3,15 @@
     <html lang="en"></html>
     <meta charset="UTF-16">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>{% block title %}Guestbook{% endblock %}</title>
 </head>
 <body>
-    <div class="container">
+    <div class="pageselect">
         <header>
-            <h1>My Guestbook</h1>
             {% include 'menu.html' %}
         </header>
+    </div>
+    <div class="container">
         
         <main>
             {% block content %}{% endblock %}
@@ -20,5 +20,7 @@
             <p>© 2024 VBFF CYBER LINJEN(RORY)</p>
         </footer>
     </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

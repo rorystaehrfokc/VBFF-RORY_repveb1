@@ -1,16 +1,21 @@
-    <title>{% block title %}Guestbook{% endblock %}</title>
-
-    <div class="container">
-        <header>
-            <nav>
-            <div class="menu">
-                <a href="../">HOME</a> |
-                <a href="../about">ABOUT</a> |
-                <a href="../messages">MSG</a> |
-                <a href="../querystring">QUERYSTRING</a>
-            </nav>
-        </header>
-        <main>
-        {% block content %}{% endblock %}
-    </main>
-    </div>
+<div class="navbar">
+    <nav>    
+        <a href="#" class="nav-branding">STÆHER DK</a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="../{{ language }}/home">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a href="../{{ language }}/about">ABOUT</a>
+            </li>
+            <li class="nav-item">
+                <a href="../{{ language }}/messages">MSG</a>
+            </li>                   
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</div>

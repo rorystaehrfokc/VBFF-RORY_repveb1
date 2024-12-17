@@ -1,7 +1,7 @@
 # import table
 from flask import Flask, request, redirect, render_template, make_response, url_for
-import io, json, os
 from datetime import datetime
+import json, os
 
 # Flask initialaize
 app = Flask(__name__,
@@ -18,75 +18,58 @@ if os.path.exists(MESSAGES_FILE):
 else:
     messages = {}
 
-# Home
+#redirects to home en
 @app.route('/')
-def home():
-    if request.cookies.get("First_time", "") == "no":
-        pass
-    else:
-        return redirect('/set_language', "home")
-    if request.cookies.get("language", "") == "da" or "en" or "Jp":
-        language = request.cookies.get("language", "")
-    else:
-        language = "en"
-        set_cookie("language", language)
-    language = "en"
-    language_file = f"translated/about_{language}.json"
+def sendtohome():
+    return(redirect('/en/home'))
+
+#redirets to the page in en
+@app.route('/<page>')
+def sendtopage(page):
+    if page == 'en' or 'da' or 'jp':
+        return(redirect(f'/{page}/home'))
+    return(redirect(f'/en/{page}'))
+
+#redirects to en if language is none
+def ifnone(lang, page):
+    if lang == "none":
+        return redirect(f'/en/{page}')
+
+#lodes the language file
+def getpagelang(lang, page):
+    language_file = f"translated/{page}_{lang}.json"
     if os.path.exists(language_file):
         with open(language_file, "r") as fp:
-           lang = json.load(fp)
+           langu = json.load(fp)
     else:
-        lang = {}
-        with open(f'./translate/about_{language}.json', 'w') as fp:
-           json.dump(lang, fp)
+        langu = {}
+        with open(f'./translate/{page}_{lang}.json', 'w') as fp:
+           json.dump(langu, fp)
         pass
+    return (langu)
+
+# Home
+@app.route('/<language>/home')
+def home(language):
+    page = "home"
+    langu = getpagelang(language, page)
     return render_template('home.html',
-                           title="Home")
+                           title="Home",
+                           language=language,
+                           langu=langu)
     
 
 #About
-@app.route('/about')
-def about():
-    if request.cookies.get("First_time", "") == "no":
-        pass
-    else:
-        return redirect('/set_language', "about")
-    if request.cookies.get("language", "") == "da" or "en" or "Jp":
-        language = request.cookies.get("language", "")
-    else:
-        language = "en"
-        set_cookie("language", language)
-    language_file = "translated/home_{language}.json"
-    if os.path.exists(language_file):
-        with open(language_file, "r") as file:
-            #Insert dictonary
-            pass
-    else:
-        #Insert dictonary_2
-        pass
+@app.route('/<language>/about')
+def about(language):
+    page = "about"
+    getpagelang(language, page)
     return  render_template('about.html',
-                            title="About")
+                            title="About",
+                            language=language)
 
-
-@app.route('/querystring')
-def quertstring():
-    if request.cookies.get("First_time", "") == "no":
-        pass
-    else:
-        return redirect('/set_language', "querystring")
-    if request.cookies.get("language", "") == "da" or "en" or "Jp":
-        language = request.cookies.get("language", "")
-    else:
-        language = "en"
-        set_cookie("language", language)
-    language_file = "translated/home_{language}.json"
-    if os.path.exists(language_file):
-        with open(language_file, "r") as file:
-            #Insert dictonary
-            pass
-    else:
-        #Insert dictonary_2
-        pass
+@app.route('/<language>/querystring')
+def quertstring(language):
     name = request.args.get("name")
     age = request.args.get("age")
     language = request.args.get("language")
@@ -102,49 +85,19 @@ def quertstring():
     
     
 
-@app.route('/messages')
-def msg():
-    if request.cookies.get("First_time", "") == "no":
-        pass
-    else:
-        return redirect('/set_language', "messages")
-    if request.cookies.get("language", "") == "da" or "en" or "Jp":
-        language = request.cookies.get("language", "")
-    else:
-        language = "en"
-        set_cookie("language", language)
-    language_file = "translated/home_{language}.json"
-    if os.path.exists(language_file):
-        with open(language_file, "r") as file:
-            #Insert dictonary
-            pass
-    else:
-        #Insert dictonary_2
-        pass
+@app.route('/<language>/messages')
+def msg(language):
+    page = "messages"
+    getpagelang(language, page)
     return  render_template('messages.html',
                             title="Messages",
-                            messages = messages)
+                            messages = messages,
+                            language=language)
 
-@app.route("/messages/write", methods=["GET", "POST"])
-def write():
-    if request.cookies.get("First_time", "") == "no":
-        pass
-    else:
-        return redirect('/set_language', "messages")
-    if request.cookies.get("language", "") == "da" or "en" or "Jp":
-        language = request.cookies.get("language", "")
-    else:
-        language = "en"
-        set_cookie("language", language)
-    language_file = "translated/home_{language}.json"
-    if os.path.exists(language_file):
-        with open(language_file, "r") as file:
-            #Insert dictonary
-            pass
-    else:
-        #Insert dictonary_2
-        pass
-   
+@app.route("/<language>/messages/write", methods=["GET", "POST"])
+def write(language):
+    page = "write"
+    getpagelang(language, page)
     if request.method == "POST":
         name = request.form.get("name")
         message = request.form.get("message")
@@ -170,29 +123,22 @@ def write():
     
     # Pre-fill name from cookie if available
     name = request.cookies.get("name", "")
-    return render_template("write.html", name=name)
+    return render_template("write.html",
+                           name=name,
+                           language=language)       
 
-@app.route("/set_language")
-def set_language():
-    set__language = ""
-    language = request.args.get("language")
-    set__language.set_cookie("language", language)
-    return render_template("set_language.html",
-                           language = language)
-                           
-
-@app.route("/set_cookie")
+@app.route('/howdidyougetthislink/set_cookie')
 def set_cookie():
     response = make_response("Cookie set")
     response.set_cookie("name",)
     return response
 
-@app.route("/get_cookie")
+@app.route("/howdidyougetthislink/get_cookie")
 def get_cookie():
     cookie_value = request.cookies.get("name", "", "age", "", "language", "")
     return cookie_value
 
-@app.route("/delete_cookie")
+@app.route("/howdidyougetthislink/delete_cookie")
 def delete_cookie():
     response = make_response("Cookie Deleted")
     response.delete_cookie("name", "age", "language")
