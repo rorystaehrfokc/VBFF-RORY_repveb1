@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 *{
     padding: 0;
     margin: 0;
@@ -28,14 +27,12 @@ body {
     overflow: hidden;
 }
 header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 4%;
     margin-top: 4%;
     background-color: #262626;
-    box-shadow: #202020;
-}
-.pageselect{
-    display: flex;
-    justify-content: center;
-    min-width: 90%
+    max-width: 92%;
 }
 a{
     color: #ddd;
@@ -44,23 +41,33 @@ a{
 li {
     list-style: none;
 }
-.navbar { 
-    min-width: 90%;
-    width: 95%;
-    min-height: 70px;
+nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    padding: 0 24px;
+    
+}
+.navbar { 
+    display: flex;
+    justify-content: space-between;
+    min-width: 600px;
+    max-width: 95%;
+    min-height: 70px;
     align-items: center;
     padding: 0 24px;
 }
 .nav-menu {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    position: absolute;
+    right: 7.6%;
     gap: 60px;
 }
 .nav-branding {
     font-size: 2rem;
+    align-self: left;
 }
 .nav-link {
     transition: 0,7s ease;
@@ -71,46 +78,17 @@ li {
 .hamburger{
     display: none;
     cursor: pointer;
+    position: absolute;
+    right: 12%;
 }
 .bar {
     display: block;
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    -webkit-transition: all 0,3s ease-in-out;
-    transition: all 0,3s ease-in-out;
+    -webkit-transition: all 0,6s ease-in-out;
+    transition: all 0,6s ease-in-out;
     background-color: white;
-}
-@media(max-width:768px){
-    .hamburger{
-        display: block;
-    }
-    .hamburger.active .bar:nth-child(2){
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1){
-        transform: translateY(8px); rotate: 45deg;
-    }
-    .hamburger.active .bar:nth-child(3){
-        transform: translateY(-8px); rotate: -45deg;
-    }
-    .nav-menu{
-        position:fixed;
-        left: -100%;
-        top: 141px;
-        gap: 0;
-        flex-direction: column;
-        background-color: #262626;
-        width: 100%;
-        text-align: center;
-        transition: 0.5s;
-    }
-    .nav-item{
-        margin: 16px 0;
-    }
-    .nav-menu.active{
-        left: 0;
-    }
 }
 .meesages{
     width: 90%;
@@ -124,7 +102,7 @@ li {
     justify-self: center;
     justify-content: space-around;
     align-items: center;
-    list-style: none;
+    list-style: none; 
     padding: 0;
     place-items: center;
     flex-wrap: wrap;
@@ -147,7 +125,15 @@ li {
 .message-form label {
     font-weight: bold;
 }
-.card_1{
+.cardbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    min-width: 300px;
+}
+.card_1, .card_2, .card_3, .card_4{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -156,12 +142,16 @@ li {
     margin: 0 auto;
     padding: 2em;
     min-height: 300px;
-    min-width: 300px;
+    min-width: 80%;
     background: #1c1f2b;
-    max-width: 80%;
+    max-width: 50%;
     border-radius:  10px;
     position: relative;
     color:aqua;
+}
+.card_1::before, .card_2::before, .card_3::before, .card_4::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;    
 }
 .card_1::after, .card_1::before{
     content: '';
@@ -177,57 +167,19 @@ li {
     border-radius: 10px;
     animation: 3s spin linear infinite;
 }
-.card_1::before{
-    filter: blur(1.5rem);
-    opacity: 0.5;
-
-}
-.card_2{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 2em;
-    width: 300px;
-    background: #1c1f2b;
-    border-radius:  10px;
-    position: relative;
-    color:aqua;
-}
 .card_2::after, .card_2::before{
-content: '';
-position: absolute;
-height: 100%;
-width: 100%;
-background-image: conic-gradient(from var(--angle), aqua, transparent, red, transparent, aqua);
-top: 50%;
-left: 50%;
-translate: -50% -50%;
-z-index: -1;
-padding: 4px;
-border-radius: 10px;
-animation: 3s spin linear infinite;
-}
-.card_2::before{
-    filter: blur(1.5rem);
-    opacity: 0.5;
-
-}
-.card_3{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 2em;
-    width: 300px;   
-    background: #1c1f2b;
-    text-align: center;
-    border-radius:  10px;
-    position: relative;
-    color:aqua;
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), aqua, transparent, red, transparent, aqua);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 4px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
 }
 .card_3::after, .card_3::before{
     content: '';
@@ -243,30 +195,6 @@ animation: 3s spin linear infinite;
     border-radius: 10px;
     animation: 3s spin linear infinite;
 }
-.card_3::before{
-    filter: blur(1.5rem);
-    opacity: 0.5;
-
-}
-.card_4{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    padding: 2em;
-    width: 300px;   
-    background: #1c1f2b;
-    text-align: center;
-    border-radius:  10px;
-    position: relative;
-    color:aqua;
-}
-@property --angle{
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
-}
 .card_4::after, .card_4::before{
     content: '';
     position: absolute;
@@ -281,24 +209,12 @@ animation: 3s spin linear infinite;
     border-radius: 10px;
     animation: 3s spin linear infinite;
 }
-.card_4::before{
-    filter: blur(1.5rem);
-    opacity: 0.5;
-
-}
-@keyframes spin{
-    from{
-        --angle: 0deg;
-    }
-    to{
-        --angle: 360deg;
-    }
-}
 .socials-container{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 .socials-container a{
     background-color: white;
@@ -365,8 +281,8 @@ animation: 3s spin linear infinite;
     width: 64px;
     box-sizing: border-box;
     flex-shrink: 0;
-    display: grid;
-    place-items: center;
+    float: left 30%;
+    bottom: 14.62%;
     box-shadow: 0 -5px -10px rgba(0, 0, 0, 0.05);
 }
 .write_message a svg{
@@ -414,4 +330,81 @@ footer {
     padding: 10px 0;
     background: #333;
     color: #fff;
+}
+.spacer {
+    height: 20px;
+}
+@media(max-width: 557px){
+    .message-list{
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .message-item{
+        width: 100%;
+        max-width: 100%;
+    }
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
+@media(max-width:768px){
+    header{
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .hamburger{
+        display: block;
+    }
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px); rotate:   45deg;
+    }
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px); rotate: -45deg;
+    }
+    .nav-menu{ 
+        position:fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #262626;
+        width: 100%;
+        text-align: center;
+        transition: 0.5s;
+    }
+    .nav-item{
+        margin: 16px 0;
+    }
+    .nav-menu.active{
+        left: 0;
+    }
+    .card_1, .card_2, .card_3, .card_4, .navbar{
+        min-width: 500px;
+    }
+}
+@media(max-width: 500px){
+    .card_1, .card_2, .card_3, .card_4, .navbar{
+        min-width: 300px;
+        max-width: 475px;
+    }
+}
+@media(max-width: 300px){
+    .card_1, .card_2, .card_3, .card_4, .navbar{
+        min-width: 200px;
+        max-width: 275px;
+    }
 }

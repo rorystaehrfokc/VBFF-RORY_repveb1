@@ -9,6 +9,14 @@
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="4" cols="50" maxlength="300" required></textarea><br><br>
         <a href="../{{ language }}/messages"></a>
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="checker()">Submit</button>
     </form>
+    <script>
+        function checker() {
+            var result = confirm("Are you shure you want to send this message\n\nThis action can not be undone");
+            if (result == false) {
+                event.preventDefault();
+            }
+        }   
+    </script>
 {% endblock %}

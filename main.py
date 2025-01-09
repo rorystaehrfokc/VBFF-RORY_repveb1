@@ -43,12 +43,12 @@ def getpagelang(lang, page):
            langu = json.load(fp)
     else:
         langu = {}
-        with open(f'./translate/{page}_{lang}.json', 'w') as fp:
+        with open(language_file, "w") as fp:
            json.dump(langu, fp)
         pass
     return (langu)
 
-# Home
+#Home
 @app.route('/<language>/home')
 def home(language):
     page = "home"
@@ -56,8 +56,7 @@ def home(language):
     return render_template('home.html',
                            title="Home",
                            language=language,
-                           langu=langu)
-    
+                           langu=langu) 
 
 #About
 @app.route('/<language>/about')
@@ -67,24 +66,8 @@ def about(language):
     return  render_template('about.html',
                             title="About",
                             language=language)
-
-@app.route('/<language>/querystring')
-def quertstring(language):
-    name = request.args.get("name")
-    age = request.args.get("age")
-    language = request.args.get("language")
-    cookie_name = request.args.get("cookie_name")
-
-    if cookie_name == "Save":
-        set_cookie("name", name, "age", age)
-    return  render_template('querystring.html',
-                            title="Querystring",
-                            name=name,
-                            age=age,
-                            language=language)
     
-    
-
+#Messages
 @app.route('/<language>/messages')
 def msg(language):
     page = "messages"
@@ -94,6 +77,7 @@ def msg(language):
                             messages = messages,
                             language=language)
 
+#Write
 @app.route("/<language>/messages/write", methods=["GET", "POST"])
 def write(language):
     page = "write"
